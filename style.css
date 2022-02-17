@@ -1,0 +1,65 @@
+/* Variable definition */
+/* Pen's SCSS */
+body {
+  background: black;
+  transition: background-position 0.3s ease-in-out;
+}
+body.fp-viewing-0 {
+  background-position: center 0%;
+}
+body.fp-viewing-1 {
+  background-position: center 50%;
+}
+body.fp-viewing-2 {
+  background-position: center 100%;
+}
+
+.one {
+    background: linear-gradient(-45deg, transparent 25%, white 25%, white 75%, transparent 75%, transparent 100%);
+}
+.three {
+    background: linear-gradient(-45deg, transparent 25%, #DD0426 25%, #DD0426 75%, transparent 75%, transparent 100%);
+    background-color: #F02D3A;
+}
+
+.two {
+    background: linear-gradient(45deg, transparent 25%, #2f7da2 25%, #2f7da2 75%, transparent 75%, transparent 100%);
+    text-align: right;
+    background-color: #3c4565;
+}
+
+h1,
+h2 {
+  font-family: "Roboto", sans-serif;
+  font-size: 58px;
+  max-width: 830px;
+  padding: 0 15px;
+  margin: 0 auto;
+  height: 64px;
+  overflow: hidden;
+  line-height: 3.5;
+  transition: line-height 0.85s cubic-bezier(0.77, 0, 0.175, 1);
+}
+
+h1 {
+  font-weight: 100;
+  transition-delay: 0.3s;
+}
+
+h2 {
+  margin-top: -6px;
+  font-weight: 300;
+  transition-delay: 0.8s;
+}
+
+.section.active h1,
+.section.active h2 {
+  line-height: 1;
+}
+a{
+    color: black;
+}
+
+.reptile{
+    background-color: blue;
+}
