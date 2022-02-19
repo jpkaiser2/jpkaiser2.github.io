@@ -28,6 +28,12 @@ body.fp-viewing-2 {
     background-color: #3c4565;
 }
 
+.four {
+    background: linear-gradient(45deg, transparent 25%, #71F79F 25%, #71F79F 75%, transparent 75%, transparent 100%);
+    text-align: right;
+    background-color: #285238;
+}
+
 h1,
 h2 {
   font-family: "Roboto", sans-serif;
@@ -62,4 +68,13 @@ a{
 
 .reptile{
     background-color: blue;
+}
+.whiteText{
+    color: white;
+}
+.greenText {
+    color: #285238;
+}
+.jri {
+    color: #3c4565;
 }
