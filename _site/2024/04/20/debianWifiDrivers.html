@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Installing Macbook Pro Broadcom Wifi Drivers on Debian | Jacob Kaiserman’s Blog</title>
+<meta name="generator" content="Jekyll v4.3.3" />
+<meta property="og:title" content="Installing Macbook Pro Broadcom Wifi Drivers on Debian" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Installing Macbook Pro Broadcom Wifi Drivers on Debian I am writing this article because I have found no resources on this issue. I hope that it can help the 2 and a half people with the same issue." />
+<meta property="og:description" content="Installing Macbook Pro Broadcom Wifi Drivers on Debian I am writing this article because I have found no resources on this issue. I hope that it can help the 2 and a half people with the same issue." />
+<link rel="canonical" href="http://localhost:4000/2024/04/20/debianWifiDrivers.html" />
+<meta property="og:url" content="http://localhost:4000/2024/04/20/debianWifiDrivers.html" />
+<meta property="og:site_name" content="Jacob Kaiserman’s Blog" />
+<meta property="og:image" content="https://jacobkaiserman.com/blog/assets/images/debian.png" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2024-04-20T16:37:26-05:00" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta property="twitter:image" content="https://jacobkaiserman.com/blog/assets/images/debian.png" />
+<meta property="twitter:title" content="Installing Macbook Pro Broadcom Wifi Drivers on Debian" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","dateModified":"2024-04-20T16:37:26-05:00","datePublished":"2024-04-20T16:37:26-05:00","description":"Installing Macbook Pro Broadcom Wifi Drivers on Debian I am writing this article because I have found no resources on this issue. I hope that it can help the 2 and a half people with the same issue.","headline":"Installing Macbook Pro Broadcom Wifi Drivers on Debian","image":"https://jacobkaiserman.com/blog/assets/images/debian.png","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/2024/04/20/debianWifiDrivers.html"},"url":"http://localhost:4000/2024/04/20/debianWifiDrivers.html"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/assets/main.css"><link type="application/atom+xml" rel="alternate" href="http://localhost:4000/feed.xml" title="Jacob Kaiserman&apos;s Blog" /></head>
+<body><header class="site-header" role="banner">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/">Jacob Kaiserman&#39;s Blog</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+       <!-- <div class="trigger"><a class="page-link" href="/about/">About</a></div>-->
+        <div class="trigger">
+            <a class="page-link" href="https://jacobkaiserman.com">Main Page</a>
+        </div>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title p-name" itemprop="name headline">Installing Macbook Pro Broadcom Wifi Drivers on Debian</h1>
+    <p class="post-meta">
+      <time class="dt-published" datetime="2024-04-20T16:37:26-05:00" itemprop="datePublished">Apr 20, 2024
+      </time></p>
+  </header>
+
+  <div class="post-content e-content" itemprop="articleBody">
+    <h1>Installing Macbook Pro Broadcom Wifi Drivers on Debian</h1>
+<p><img src="https://jacobkaiserman.com/blog/assets/images/debian.png" alt="debian on macbook pro" />
+I am writing this article because I have found no resources on this issue. I hope that it can help the 2 and a half people with the same issue.</p>
+
+<p>I had an old 2012 unibody MacBook Pro that was running very slow on macOS. Even though it had good specs (I upgraded the ram and replaced the HDD with an SSD), it was still running slow since macOS was no longer optimized for it. I decided to install a GNU/Linux distro to get some use out of it and learn a bit about Linux.</p>
+
+<p>I chose to install Debian for its stability and plentiful documentation. When I first installed it, Debian could not find the old Broadcom BCM43142 driver. I had to plug it into my network via an ethernet cable to do a complete install. If you are unable to do this, you can do a minimal install and then download the desktop environment after getting the wifi drivers to work. After countless hours of searching, I finally found a solution on an old Reddit thread.</p>
+
+<p>First, you will need to add the non-free repository to Debian if you haven’t already. This allows Debian to access proprietary drivers, such as Broadcom. On Debian Bookworm, navigate to the sources list:</p>
+
+<p><code>sudo nano /etc/apt/sources.list</code></p>
+
+<p>Add the following line to the file:</p>
+
+<p><code>deb http://deb.debian.org/debian bookworm main contrib non-free-firmware non-free</code></p>
+
+<p>Save the file with <code>ctrl+o</code> and close it with <code>ctrl+x</code></p>
+
+<p>Then, update the package list:</p>
+
+<p><code>apt-get update</code></p>
+
+<p>Then you will need to install the linux-image, linux-headers and broadcom-sta-dkms packages:</p>
+
+<p><code>apt-get install linux-image-$(uname -r|sed 's,[^-]*-[^-]*-,,') linux-headers-$(uname -r|sed 's,[^-]*-[^-]*-,,') broadcom-sta-dkms</code></p>
+
+<p>Unload the modules with this line:</p>
+
+<p><code>sudo modprobe -r b44 b43 b43legacy ssb brcmsmac bcma</code></p>
+
+<p>**Note: the above line needs to be ran as root. If you do not have the proper permissions, type “su”, press enter, and type your password. This will give you root access to run modprobe</p>
+
+<p>The final step is to load the wl module:</p>
+
+<p><code>sudo modprobe wl</code></p>
+
+<p>The Broadcom wifi drivers should be functional now. If not, you may need to restart to apply the changes. I hope that this helped anyone who had this very specific problem.</p>
+
+  </div><a class="u-url" href="/2024/04/20/debianWifiDrivers.html" hidden></a>
+</article>
+
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/"></data>
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">Jacob Kaiserman&#39;s Blog</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li class="p-name">Jacob Kaiserman&#39;s Blog</li><li><a class="u-email" href="mailto:jacob@jacobkaiserman.com">jacob@jacobkaiserman.com</a></li></ul>
+      </div>
+
+      <div class="footer-col footer-col-2"><ul class="social-media-list"><li><a href="https://github.com/jpkaiser2"><svg class="svg-icon"><use xlink:href="/assets/minima-social-icons.svg#github"></use></svg> <span class="username">jpkaiser2</span></a></li></ul>
+</div>
+
+      <div class="footer-col footer-col-3">
+        <p>My personal blog</p>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+</body>
+
+</html>
+
+<style>
+
+</style>

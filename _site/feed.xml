@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.3">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2025-02-14T22:03:25-06:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Jacob Kaiserman’s Blog</title><subtitle>My personal blog</subtitle><entry><title type="html">Installing Macbook Pro Broadcom Wifi Drivers on Debian</title><link href="http://localhost:4000/2024/04/20/debianWifiDrivers.html" rel="alternate" type="text/html" title="Installing Macbook Pro Broadcom Wifi Drivers on Debian" /><published>2024-04-20T16:37:26-05:00</published><updated>2024-04-20T16:37:26-05:00</updated><id>http://localhost:4000/2024/04/20/debianWifiDrivers</id><content type="html" xml:base="http://localhost:4000/2024/04/20/debianWifiDrivers.html"><![CDATA[<h1>Installing Macbook Pro Broadcom Wifi Drivers on Debian</h1>
+<p><img src="https://jacobkaiserman.com/blog/assets/images/debian.png" alt="debian on macbook pro" />
+I am writing this article because I have found no resources on this issue. I hope that it can help the 2 and a half people with the same issue.</p>
+
+<p>I had an old 2012 unibody MacBook Pro that was running very slow on macOS. Even though it had good specs (I upgraded the ram and replaced the HDD with an SSD), it was still running slow since macOS was no longer optimized for it. I decided to install a GNU/Linux distro to get some use out of it and learn a bit about Linux.</p>
+
+<p>I chose to install Debian for its stability and plentiful documentation. When I first installed it, Debian could not find the old Broadcom BCM43142 driver. I had to plug it into my network via an ethernet cable to do a complete install. If you are unable to do this, you can do a minimal install and then download the desktop environment after getting the wifi drivers to work. After countless hours of searching, I finally found a solution on an old Reddit thread.</p>
+
+<p>First, you will need to add the non-free repository to Debian if you haven’t already. This allows Debian to access proprietary drivers, such as Broadcom. On Debian Bookworm, navigate to the sources list:</p>
+
+<p><code>sudo nano /etc/apt/sources.list</code></p>
+
+<p>Add the following line to the file:</p>
+
+<p><code>deb http://deb.debian.org/debian bookworm main contrib non-free-firmware non-free</code></p>
+
+<p>Save the file with <code>ctrl+o</code> and close it with <code>ctrl+x</code></p>
+
+<p>Then, update the package list:</p>
+
+<p><code>apt-get update</code></p>
+
+<p>Then you will need to install the linux-image, linux-headers and broadcom-sta-dkms packages:</p>
+
+<p><code>apt-get install linux-image-$(uname -r|sed 's,[^-]*-[^-]*-,,') linux-headers-$(uname -r|sed 's,[^-]*-[^-]*-,,') broadcom-sta-dkms</code></p>
+
+<p>Unload the modules with this line:</p>
+
+<p><code>sudo modprobe -r b44 b43 b43legacy ssb brcmsmac bcma</code></p>
+
+<p>**Note: the above line needs to be ran as root. If you do not have the proper permissions, type “su”, press enter, and type your password. This will give you root access to run modprobe</p>
+
+<p>The final step is to load the wl module:</p>
+
+<p><code>sudo modprobe wl</code></p>
+
+<p>The Broadcom wifi drivers should be functional now. If not, you may need to restart to apply the changes. I hope that this helped anyone who had this very specific problem.</p>]]></content><author><name></name></author><summary type="html"><![CDATA[Installing Macbook Pro Broadcom Wifi Drivers on Debian I am writing this article because I have found no resources on this issue. I hope that it can help the 2 and a half people with the same issue.]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://jacobkaiserman.com/blog/assets/images/debian.png" /><media:content medium="image" url="https://jacobkaiserman.com/blog/assets/images/debian.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry></feed>

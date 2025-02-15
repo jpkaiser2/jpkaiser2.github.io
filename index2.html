@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jacob Kaiserman's Portfolio</title>
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+
+    <!-- Material Design Web Components -->
+    <script type="importmap">
+        {
+            "imports": {
+                "@material/web/": "https://esm.run/@material/web/"
+            }
+        }
+    </script>
+    <script type="module">
+        import '@material/web/all.js';
+        import {styles as typescaleStyles} from '@material/web/typography/md-typescale-styles.js';
+
+        document.adoptedStyleSheets.push(typescaleStyles.styleSheet);
+    </script>
+
+    <style>
+        :root {
+            --md-sys-color-primary: #1f2937; /* Dark slate gray */
+            --md-sys-color-on-primary: white; /* White */
+            --md-sys-color-background: #0f172a; /* Deep navy */
+            --md-sys-color-on-background: #94a3b8; /* Soft blue-gray */
+            --md-sys-color-surface: #1e293b; /* Slightly lighter navy */
+            --md-sys-color-on-surface: #e2e8f0; /* Soft white */
+            --md-sys-color-secondary: #3b82f6; /* Futuristic blue */
+        }
+
+        body {
+            margin: 0;
+            font-family: 'Roboto', sans-serif;
+            background-color: var(--md-sys-color-background);
+            color: var(--md-sys-color-on-background);
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 16px;
+            background-color: var(--md-sys-color-primary);
+            color: var(--md-sys-color-on-primary);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 1.5rem;
+        }
+
+        nav {
+            display: flex;
+            gap: 16px;
+        }
+
+        main {
+            padding: 16px;
+        }
+
+        section {
+            margin-bottom: 48px;
+        }
+
+        .hero {
+            text-align: center;
+            padding: 48px 16px;
+            background: linear-gradient(135deg, #3b82f6 0%, #00ffc6 100%);
+            color: var(--md-sys-color-on-primary);
+            border-radius: 16px;
+            animation: fadeIn 1.5s ease-in-out;
+        }
+
+        .hero h2 {
+            font-size: 2.5rem;
+            margin-bottom: 16px;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 32px;
+        }
+
+        header md-filled-button {
+            --md-comp-filled-button-container-color: var(--md-sys-color-secondary);
+            --md-comp-filled-button-label-text-color: var(--md-sys-color-on-primary);
+            transition: background-color 0.3s ease;
+        }
+
+        header md-filled-button:hover {
+            --md-comp-filled-button-container-color: var(--md-sys-color-secondary);
+            --md-comp-filled-button-label-text-color: var(--md-sys-color-on-primary);
+        }
+
+
+        .hero md-filled-button {
+            --md-comp-filled-button-container-color: var(--md-sys-color-primary);
+            --md-comp-filled-button-label-text-color: var(--md-sys-color-on-primary);
+        }
+
+        .achievements, .blog {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 16px;
+        }
+
+        md-outlined-card {
+            padding: 16px;
+            background-color: var(--md-sys-color-surface);
+            color: var(--md-sys-color-on-surface);
+            border-radius: 12px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            animation: slideUp 1s ease-out;
+        }
+
+        .about-card {
+            background-color: var(--md-sys-color-surface);
+            color: var(--md-sys-color-on-surface);
+            padding: 32px;
+            border-radius: 16px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);
+            margin: 0 auto;
+            max-width: 90%;
+            text-align: center;
+            border: 1px solid var(--md-sys-color-secondary);
+            animation: zoomIn 1s ease-in-out;
+        }
+
+        footer {
+            text-align: center;
+            padding: 16px;
+            background-color: var(--md-sys-color-primary);
+            color: var(--md-sys-color-on-primary);
+            animation: fadeIn 1.5s ease-in-out;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes slideUp {
+            from {
+                transform: translateY(20px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes zoomIn {
+            from {
+                transform: scale(0.8);
+                opacity: 0;
+            }
+            to {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <h1>Jacob Kaiserman</h1>
+        <nav>
+            <md-filled-button label="Home"></md-filled-button>
+            <md-filled-button label="About"></md-filled-button>
+            <md-filled-button label="Achievements"></md-filled-button>
+            <md-filled-button label="Blog"></md-filled-button>
+            <md-filled-button label="Contact"></md-filled-button>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <main>
+        <section class="hero">
+            <h2 class="md-typescale-display-large">Hi, I'm Jacob Kaiserman</h2>
+            <p class="md-typescale-body-medium">Welcome to my personal portfolio website.</p>
+        </section>
+
+        <!-- About Section -->
+        <section class="about">
+            <div class="about-card">
+                <h3 class="md-typescale-title-large">About Me</h3>
+                <p class="md-typescale-body-medium">Welcome! I’m a high school student with a passion for computers, coding, and all things tech. As the captain and lead programmer of my school’s FTC robotics team, I love tackling challenges and bringing ideas to life. Beyond robotics, I enjoy woodworking, caring for reptiles, and exploring creative projects. On this site, you’ll find more about me, my achievements, and my blog where I share my journey and interests. Thanks for stopping by!</p>
+            </div>
+        </section>
+
+        <!-- Achievements Section -->
+        <section class="achievements">
+            <h3 class="md-typescale-title-large">Achievements</h3>
+            <md-outlined-card>
+                <h4>Achievement 1</h4>
+                <p>A brief description of Achievement 1.</p>
+            </md-outlined-card>
+
+            <md-outlined-card>
+                <h4>Achievement 2</h4>
+                <p>A brief description of Achievement 2.</p>
+            </md-outlined-card>
+        </section>
+
+        <!-- Blog Section -->
+        <section class="blog">
+            <h3 class="md-typescale-title-large">Blog</h3>
+            <div class="posts">
+                {% for post in site.posts limit:4 %}
+                <md-outlined-card>
+                    <h4>{{ post.title }}</h4>
+                    <p>{{ post.excerpt }}</p>
+                    <md-tonal-button label="Read More" onclick="window.location.href='{{ post.url }}'"></md-tonal-button>
+                </md-outlined-card>
+                {% endfor %}
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section class="contact">
+            <h3 class="md-typescale-title-large">Contact Me</h3>
+            <form>
+                <md-outlined-text-field label="Name"></md-outlined-text-field>
+                <md-outlined-text-field label="Email"></md-outlined-text-field>
+                <md-outlined-text-field label="Message" textarea></md-outlined-text-field>
+                <md-filled-button label="Send"></md-filled-button>
+            </form>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 Jacob Kaiserman</p>
+    </footer>
+</body>
+</html>
