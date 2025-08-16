@@ -7,8 +7,8 @@
 <meta name="generator" content="Jekyll v4.3.3" />
 <meta property="og:title" content="Installing Macbook Pro Broadcom Wifi Drivers on Debian" />
 <meta property="og:locale" content="en_US" />
-<meta name="description" content="Installing Macbook Pro Broadcom Wifi Drivers on Debian I am writing this article because I have found no resources on this issue. I hope that it can help the 2 and a half people with the same issue." />
-<meta property="og:description" content="Installing Macbook Pro Broadcom Wifi Drivers on Debian I am writing this article because I have found no resources on this issue. I hope that it can help the 2 and a half people with the same issue." />
+<meta name="description" content="Installing Macbook Pro Broadcom Wifi Drivers on Debian" />
+<meta property="og:description" content="Installing Macbook Pro Broadcom Wifi Drivers on Debian" />
 <link rel="canonical" href="http://localhost:4000/2024/04/20/debianWifiDrivers.html" />
 <meta property="og:url" content="http://localhost:4000/2024/04/20/debianWifiDrivers.html" />
 <meta property="og:site_name" content="Jacob Kaiserman’s Blog" />
@@ -19,7 +19,7 @@
 <meta property="twitter:image" content="https://jacobkaiserman.com/blog/assets/images/debian.png" />
 <meta property="twitter:title" content="Installing Macbook Pro Broadcom Wifi Drivers on Debian" />
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"BlogPosting","dateModified":"2024-04-20T16:37:26-05:00","datePublished":"2024-04-20T16:37:26-05:00","description":"Installing Macbook Pro Broadcom Wifi Drivers on Debian I am writing this article because I have found no resources on this issue. I hope that it can help the 2 and a half people with the same issue.","headline":"Installing Macbook Pro Broadcom Wifi Drivers on Debian","image":"https://jacobkaiserman.com/blog/assets/images/debian.png","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/2024/04/20/debianWifiDrivers.html"},"url":"http://localhost:4000/2024/04/20/debianWifiDrivers.html"}</script>
+{"@context":"https://schema.org","@type":"BlogPosting","dateModified":"2024-04-20T16:37:26-05:00","datePublished":"2024-04-20T16:37:26-05:00","description":"Installing Macbook Pro Broadcom Wifi Drivers on Debian","headline":"Installing Macbook Pro Broadcom Wifi Drivers on Debian","image":"https://jacobkaiserman.com/blog/assets/images/debian.png","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/2024/04/20/debianWifiDrivers.html"},"url":"http://localhost:4000/2024/04/20/debianWifiDrivers.html"}</script>
 <!-- End Jekyll SEO tag -->
 <link rel="stylesheet" href="/assets/main.css"><link type="application/atom+xml" rel="alternate" href="http://localhost:4000/feed.xml" title="Jacob Kaiserman&apos;s Blog" /></head>
 <body><header class="site-header" role="banner">
@@ -42,19 +42,224 @@
 </header>
 <main class="page-content" aria-label="Content">
       <div class="wrapper">
-        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+        <style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap');
+  
+  /* Override any parent/body styling */
+  body {
+    background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 50%, #0f0f0f 100%) !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+  
+  .page-content, .wrapper, main {
+    background: transparent !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    max-width: none !important;
+  }
+  
+  /* Dark theme for header */
+  .site-header {
+    background: rgba(15, 15, 15, 0.95) !important;
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
+    box-shadow: 0 2px 16px rgba(0,0,0,0.3) !important;
+  }
+  
+  .site-header .wrapper {
+    padding-left: 16px !important;
+    padding-right: 16px !important;
+    max-width: 1200px !important;
+  }
+  
+  .site-title, .site-title:visited {
+    color: #ffffff !important;
+  }
+  
+  .site-nav .page-link {
+    color: #e4e4e7 !important;
+  }
+  
+  .site-nav .page-link:hover {
+    color: #007aff !important;
+  }
+  
+  /* Dark theme for footer */
+  .site-footer {
+    background: rgba(15, 15, 15, 0.95) !important;
+    backdrop-filter: blur(20px);
+    border-top: 1px solid rgba(255, 255, 255, 0.1) !important;
+    color: #a1a1aa !important;
+  }
+  
+  .site-footer .wrapper {
+    padding-left: 16px !important;
+    padding-right: 16px !important;
+    max-width: 1200px !important;
+  }
+  
+  .footer-heading {
+    color: #ffffff !important;
+  }
+  
+  .contact-list a, .social-media-list a {
+    color: #ffffff !important;
+    text-decoration: underline !important;
+  }
+  
+  .contact-list a:hover, .social-media-list a:hover {
+    color: #007aff !important;
+  }
+  
+  .apple-post-bg {
+    min-height: 100vh;
+    background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 50%, #0f0f0f 100%);
+    padding: 0;
+    margin: 0;
+    width: 100%;
+  }
+  .apple-post-container {
+    max-width: 760px;
+    margin: 64px auto 64px auto;
+    background: rgba(20, 20, 20, 0.95);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 32px;
+    box-shadow: 0 16px 64px 0 rgba(0,0,0,0.4), 0 4px 16px 0 rgba(0,0,0,0.3);
+    padding: 56px 48px 48px 48px;
+    font-family: 'Inter', 'SF Pro Display', 'Segoe UI', Arial, sans-serif;
+    color: #f5f5f7;
+    position: relative;
+    overflow: hidden;
+    transition: box-shadow 0.2s;
+    backdrop-filter: blur(20px);
+  }
+  .apple-post-container:hover {
+    box-shadow: 0 20px 80px 0 rgba(0,0,0,0.5), 0 8px 32px 0 rgba(0,0,0,0.4);
+    border-color: rgba(255, 255, 255, 0.12);
+  }
+  .apple-featured-img {
+    width: 100%;
+    max-height: 340px;
+    object-fit: cover;
+    border-radius: 18px;
+    margin-bottom: 40px;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+    background: #2a2a2a;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+  .apple-post-title {
+    font-size: 2.9rem;
+    font-weight: 700;
+    margin-bottom: 12px;
+    color: #ffffff;
+    letter-spacing: -1.2px;
+    line-height: 1.12;
+    text-shadow: 0 2px 8px rgba(0,0,0,0.4);
+  }
+  .apple-post-meta {
+    font-size: 1.15rem;
+    color: #a1a1aa;
+    margin-bottom: 44px;
+    font-weight: 500;
+    letter-spacing: 0.01em;
+  }
+  .apple-post-content {
+    font-size: 1.22rem;
+    line-height: 1.75;
+    margin-bottom: 48px;
+    color: #e4e4e7;
+    font-weight: 400;
+    word-break: break-word;
+  }
+  .apple-post-content a {
+    color: #ffffff;
+    text-decoration: underline;
+  }
+  .apple-post-content a:hover {
+    color: #007aff;
+  }
+  .apple-post-content h1 {
+    margin-top: 0;
+    margin-bottom: 0.8em;
+    font-weight: 700;
+    color: #ffffff;
+    letter-spacing: -0.8px;
+    font-size: 2.4rem;
+  }
+  .apple-post-content h2, .apple-post-content h3, .apple-post-content h4 {
+    margin-top: 2.2em;
+    margin-bottom: 0.7em;
+    font-weight: 600;
+    color: #ffffff;
+    letter-spacing: -0.5px;
+  }
+  .apple-post-content p {
+    margin-bottom: 1.4em;
+  }
+  @media (max-width: 900px) {
+    .apple-post-container { 
+      padding: 40px 6vw 40px 6vw; 
+      margin: 32px 16px 32px 16px;
+    }
+  }
+  @media (max-width: 600px) {
+    .apple-post-container { 
+      padding: 24px 20px 24px 20px; 
+      border-radius: 16px; 
+      margin: 16px 8px 16px 8px;
+    }
+    .apple-post-title { font-size: 2.1rem; }
+  }
+  .apple-share-section {
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding-top: 24px;
+    margin-top: 32px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    font-size: 1.08rem;
+    color: #a1a1aa;
+    font-weight: 500;
+  }
+  .apple-share-section a {
+    color: #007aff;
+    text-decoration: none;
+    font-size: 1.5rem;
+    margin-right: 10px;
+    transition: all 0.18s;
+    border-radius: 50%;
+    padding: 8px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .apple-share-section a:hover {
+    color: #fff;
+    background: linear-gradient(120deg, #007aff 0%, #5ac8fa 100%);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 16px rgba(0, 122, 255, 0.3);
+  }
+</style>
 
-  <header class="post-header">
-    <h1 class="post-title p-name" itemprop="name headline">Installing Macbook Pro Broadcom Wifi Drivers on Debian</h1>
-    <p class="post-meta">
-      <time class="dt-published" datetime="2024-04-20T16:37:26-05:00" itemprop="datePublished">Apr 20, 2024
-      </time></p>
-  </header>
+<div class="apple-post-bg">
+  <article class="apple-post-container post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+    
+      <img src="https://jacobkaiserman.com/blog/assets/images/debian.png" alt="Installing Macbook Pro Broadcom Wifi Drivers on Debian" class="apple-featured-img" />
+    
+    <header class="post-header">
+      <h1 class="apple-post-title p-name" itemprop="name headline">Installing Macbook Pro Broadcom Wifi Drivers on Debian</h1>
+      <div class="apple-post-meta">
+        <time class="dt-published" datetime="2024-04-20T16:37:26-05:00" itemprop="datePublished">Apr 20, 2024
+        </time></div>
+    </header>
+    <div class="apple-post-content post-content e-content" itemprop="articleBody">
+      <h1>Installing Macbook Pro Broadcom Wifi Drivers on Debian</h1>
 
-  <div class="post-content e-content" itemprop="articleBody">
-    <h1>Installing Macbook Pro Broadcom Wifi Drivers on Debian</h1>
-<p><img src="https://jacobkaiserman.com/blog/assets/images/debian.png" alt="debian on macbook pro" />
-I am writing this article because I have found no resources on this issue. I hope that it can help the 2 and a half people with the same issue.</p>
+<p>I am writing this article because I have found no resources on this issue. I hope that it can help the 2 and a half people with the same issue.</p>
 
 <p>I had an old 2012 unibody MacBook Pro that was running very slow on macOS. Even though it had good specs (I upgraded the ram and replaced the HDD with an SSD), it was still running slow since macOS was no longer optimized for it. I decided to install a GNU/Linux distro to get some use out of it and learn a bit about Linux.</p>
 
@@ -90,8 +295,9 @@ I am writing this article because I have found no resources on this issue. I hop
 
 <p>The Broadcom wifi drivers should be functional now. If not, you may need to restart to apply the changes. I hope that this helped anyone who had this very specific problem.</p>
 
-  </div><a class="u-url" href="/2024/04/20/debianWifiDrivers.html" hidden></a>
-</article>
+    </div><a class="u-url" href="/2024/04/20/debianWifiDrivers.html" hidden></a>
+  </article>
+</div>
 
       </div>
     </main><footer class="site-footer h-card">

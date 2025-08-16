@@ -1,9 +1,10 @@
 ---
 layout: post
 title:  "How I Created Code-A-Robot"
-date:   2025-08-15 21:37:26 -0500
+date:   2025-08-15 00:00:00 -0500
 image: https://jacobkaiserman.com/logoShadow.png
 ---
+
 <h1>How I Created Code-A-Robot</h1>
 
 
