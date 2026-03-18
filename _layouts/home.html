@@ -63,6 +63,9 @@
                
                         <span>Achievements</span>
                     </a>
+                    <a href="#projects" class="nav-link px-4 py-2 rounded-lg hover:bg-white/10 transition-all duration-200 flex items-center space-x-2">
+                        <span>Projects</span>
+                    </a>
                     <a href="#blog" class="nav-link px-4 py-2 rounded-lg hover:bg-white/10 transition-all duration-200 flex items-center space-x-2">
                         
                         <span>Blog</span>
@@ -89,6 +92,9 @@
                     <a href="#achievements" onclick="closeMobileMenu()" class="nav-link flex items-center space-x-3 px-4 py-3 rounded-lg hover:bg-white/10 transition-all duration-200">
                         
                         <span>Achievements</span>
+                    </a>
+                    <a href="#projects" onclick="closeMobileMenu()" class="nav-link flex items-center space-x-3 px-4 py-3 rounded-lg hover:bg-white/10 transition-all duration-200">
+                        <span>Projects</span>
                     </a>
                     <a href="#blog" onclick="closeMobileMenu()" class="nav-link flex items-center space-x-3 px-4 py-3 rounded-lg hover:bg-white/10 transition-all duration-200">
                        
@@ -167,6 +173,51 @@
                         During the summer of 2024, I attended a VISIONS program in Montana where I did volunteer carpentry work and helped run a child nutrition program on the Blackfeet Indian Reservation.
                     </p>
                 </div>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section id="projects" class="mb-16">
+            <h3 class="text-3xl font-bold text-center text-dark-text mb-12">My Projects</h3>
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <a href="https://codearobot.org" target="_blank" class="bg-dark-surface rounded-2xl shadow-lg overflow-hidden hover:shadow-2xl transition-shadow duration-300 group">
+                    <div class="aspect-video overflow-hidden">
+                        <img src="{{ '/assets/images/CodeARobotScreenshot.png' | relative_url }}" alt="Code-A-Robot" 
+                             class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+                    </div>
+                    <div class="p-8">
+                        <h4 class="text-xl font-semibold text-dark-text mb-3 group-hover:text-primary transition-colors duration-200">Code-A-Robot</h4>
+                        <p class="text-dark-muted leading-relaxed">
+                            Code-A-Robot is an interactive learning platform I developed to teach FTC robotics programming through structured lessons, real code examples, and hands-on simulations, and it has already grown to over 600 users. It combines curriculum, in-browser coding tools, and robotics-specific concepts to help students progress from basic Java skills to building fully functional competition robots.
+                        </p>
+                    </div>
+                </a>
+                
+                <a href="https://jacobkaiserman.com/HardwareLabelGenerator/" target="_blank" class="bg-dark-surface rounded-2xl shadow-lg overflow-hidden hover:shadow-2xl transition-shadow duration-300 group">
+                    <div class="aspect-video overflow-hidden">
+                        <img src="{{ '/assets/images/HardwareLabelGeneratorScreenshot.png' | relative_url }}" alt="Hardware Label Generator" 
+                             class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+                    </div>
+                    <div class="p-8">
+                        <h4 class="text-xl font-semibold text-dark-text mb-3 group-hover:text-primary transition-colors duration-200">Hardware Label Generator</h4>
+                        <p class="text-dark-muted leading-relaxed">
+                            I developed a web-based hardware label generator that allows users to input fastener specifications and instantly create clean, customizable labels with dynamically generated diagrams. The site is built with HTML, CSS, and JavaScript, and is designed to scale with future integration of standardized engineering data for increased accuracy and usability.
+                        </p>
+                    </div>
+                </a>
+
+                <a href="https://javarunner.jacobkaiserman.com/" target="_blank" class="bg-dark-surface rounded-2xl shadow-lg overflow-hidden hover:shadow-2xl transition-shadow duration-300 group">
+                    <div class="aspect-video overflow-hidden">
+                        <img src="{{ '/assets/images/SimpleJavaRunnerScreenshot.png' | relative_url }}" alt="Simple Java Runner" 
+                             class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+                    </div>
+                    <div class="p-8">
+                        <h4 class="text-xl font-semibold text-dark-text mb-3 group-hover:text-primary transition-colors duration-200">Simple Java Runner</h4>
+                        <p class="text-dark-muted leading-relaxed">
+                            A streamlined Java code editor and runner that lets you write and execute Java code directly in your browser using CheerpJ WebAssembly runtime. Built with CodeMirror for syntax highlighting and Vite for fast compilation, it provides instant feedback with a clean interface focused on simplicity and usability. Created for interactive lessons on Code-A-Robot.
+                        </p>
+                    </div>
+                </a>
             </div>
         </section>
 
